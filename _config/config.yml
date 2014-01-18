@@ -1,0 +1,6 @@
+---
+Name: gallery
+---
+Image:
+  extensions:
+    - GalleryImageExtension
