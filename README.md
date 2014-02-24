@@ -26,16 +26,16 @@ Remember to also add upload dir rules, and sortablefile (`"bummzack/sortablefile
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "git@bitbucket.org:titledk/silverstripe-gallery.git",
+			"url": "git@bitbucket.org:titledk/silverstripe-gallery.git"
 		},
 		{
 			"type": "vcs",
-			"url": "git@bitbucket.org:titledk/silverstripe-uploaddirrules.git",
+			"url": "git@bitbucket.org:titledk/silverstripe-uploaddirrules.git"
 		}
 		],
-		"require" {
-			"titledk/silverstripe-gallery": "*"
-		}
+	"require" {
+		"titledk/silverstripe-gallery": "*"
+	}
 
 ### Instantiation
 
