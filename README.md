@@ -39,8 +39,22 @@ Remember to also add upload dir rules, and sortablefile (`"bummzack/sortablefile
 
 ### Instantiation
 
-
 Add the following to your `config.yml`:
+
+
+
+
+Basics:
+
+
+	GalleryPage:
+	  extensions:
+	    - AssetsFolderExtension
+	    - UploadDirRules_SiteTreeExtension
+
+
+A more holistic approach:
+
 
 	SiteTree:
 	  extensions:
@@ -50,5 +64,6 @@ Add the following to your `config.yml`:
 	  extensions:
 	    - UploadDirRules_LeftAndMainExtension
 
-
+NOTE: The `UploadDirRules_LeftAndMainExtension` is needed for using
+the uload dir rules in the content area as well.
 
