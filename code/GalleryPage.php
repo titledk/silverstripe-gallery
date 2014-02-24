@@ -2,7 +2,7 @@
 /**
  * Gallery Page
  * 
- * @package gallerys
+ * @package gallery
  * @author Anselm Christophersen <ac@title.dk>
  * @copyright Copyright (c) 2014, Title Web Solutions
  */
@@ -68,10 +68,10 @@ class GalleryPage extends Page {
 		}		
 	}	
 
-	
+
 
 }
 
 class GalleryPage_Controller extends Page_Controller {
-	
+
 }

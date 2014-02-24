@@ -1,6 +1,6 @@
 <?php
 /**
- * Gallery Page
+ * Gallery Holder
  * 
  * @package gallery
  * @author Anselm Christophersen <ac@title.dk>
@@ -26,7 +26,7 @@ class GalleryHolder extends Page {
 		}
 	}
 
-	
+
 }
 class GalleryHolder_Controller extends Page_Controller {
 
