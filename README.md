@@ -3,7 +3,7 @@
 _by title.dk/Anselm Christophersen - January 2014_
 
 
-A simple gallery backend for SilverStripe 3.
+A simple gallery backend for SilverStripe 3 with advanced directory saving rules.
 
 
 Requires:
@@ -15,7 +15,29 @@ Requires:
 
 ## Installation
 
+### Manual
+
 	git submodule add git@bitbucket.org:titledk/silverstripe-gallery.git public/gallery
+
+Remember to also add upload dir rules, and sortablefile (`"bummzack/sortablefile": "*"`).
+
+### Composer
+
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@bitbucket.org:titledk/silverstripe-gallery.git",
+		},
+		{
+			"type": "vcs",
+			"url": "git@bitbucket.org:titledk/silverstripe-uploaddirrules.git",
+		}
+		],
+		"require" {
+			"titledk/silverstripe-gallery": "*"
+		}
+
+### Instantiation
 
 
 Add the following to your `config.yml`:
@@ -28,9 +50,5 @@ Add the following to your `config.yml`:
 	  extensions:
 	    - UploadDirRules_LeftAndMainExtension
 
-
-Add the following to your `composer.json`:
-
-	"bummzack/sortablefile": "*"
 
 
