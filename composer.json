@@ -8,7 +8,8 @@
     {"name": "Anselm Christophersen","email": "ac@anselm.dk"}
   ],
   "require": {
-	"bummzack/sortablefile": "*"
+    "bummzack/sortablefile": "*",
+    "titledk/silverstripe-uploaddirrules": "*"
   },
   "extra": {
     "installer-name": "gallery"
