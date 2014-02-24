@@ -16,6 +16,9 @@ class GalleryPage extends Page {
 	//private static $can_be_root = false;
 	private static $allowed_children = array();
 
+	private static $icon = "gallery/images/pageicons/gallery.png";
+
+
 	private static $many_many = array(
 		'Images' => 'Image'
 	);
