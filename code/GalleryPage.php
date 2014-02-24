@@ -32,7 +32,6 @@ class GalleryPage extends Page {
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 
-		
 		//adding upload field - if item has already been saved
 		if ($this->ID && $this->AssetsFolderID != 0) {
 
@@ -48,7 +47,7 @@ class GalleryPage extends Page {
 
 			$fields->addFieldToTab('Root.Images', $imageField);
 
-		}		
+		}
 		
 		return $fields;
 	}
