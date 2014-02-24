@@ -13,6 +13,8 @@ class GalleryPage extends Page {
 	static $singular_name = 'Gallery';
 	static $plural_name = 'Galleries';
 	static $description = 'A page type for listing images';
+	//private static $can_be_root = false;
+	private static $allowed_children = array();
 
 	private static $many_many = array(
 		'Images' => 'Image'

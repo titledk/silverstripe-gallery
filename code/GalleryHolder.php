@@ -14,7 +14,8 @@ class GalleryHolder extends Page {
 	static $plural_name = 'Gallery Holders';
 	static $description = 'Holder for galleries';
 
-	private static $default_child = "GalleryPage";	
+	private static $default_child = "GalleryPage";
+	private static $allowed_children = array('GalleryPage');
 
 
 	public function getFirstImage(){
