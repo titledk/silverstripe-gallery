@@ -77,7 +77,13 @@ class GalleryPage extends Page {
 	// OR use $Images.Sort('SortOrder') in your templates which will unclutter your PHP classes
 	public function SortedImages(){
 		//Debug::dump($this->Images()->Sort('SortOrder')->toArray());
-		return $this->Images()->Sort('SortOrder');
+
+		$obj = $this;
+		if($this->Locale != Translatable::default_locale()) {
+			$obj = $this->getTranslation(Translatable::default_locale());
+		}
+
+		return $obj->Images()->Sort('SortOrder');
 	}
 
 	public function getFirstImage(){
