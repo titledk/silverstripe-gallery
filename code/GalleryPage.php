@@ -35,17 +35,37 @@ class GalleryPage extends Page {
 		//adding upload field - if item has already been saved
 		if ($this->ID && $this->AssetsFolderID != 0) {
 
-			//Use SortableUploadField instead of UploadField!
-			//The upload directory is expected to have been set in {@see UploadDirRules},
-			//and should be something like: "assets/ID-Pagename"
-			//TODO: This could easily be configurable through yml files (to e.g. "assets/galleries/ID"),
-			//so this module could do without the upload dir rules
-			//
-			//read more about adding additinoal metadata to images here:
-			//http://doc.silverstripe.org/framework/en/reference/uploadfield
-			$imageField = new SortableUploadField('Images', '');
+			if($this->Locale == Translatable::default_locale()) {
+				//Use SortableUploadField instead of UploadField!
+				//The upload directory is expected to have been set in {@see UploadDirRules},
+				//and should be something like: "assets/ID-Pagename"
+				//TODO: This could easily be configurable through yml files (to e.g. "assets/galleries/ID"),
+				//so this module could do without the upload dir rules
+				//
+				//read more about adding additinoal metadata to images here:
+				//http://doc.silverstripe.org/framework/en/reference/uploadfield
+				$imageField = new SortableUploadField('Images', '');
 
-			$fields->addFieldToTab('Root.Images', $imageField);
+				$fields->addFieldToTab('Root.Images', $imageField);
+			} else {
+				$orig = $this->getTranslation(Translatable::default_locale());
+
+				$html = sprintf(
+					'<a href="%s">%s</a>',
+					Controller::join_links(
+						$orig->CMSEditLink(),
+						'?locale=' . $orig->Locale
+					),
+					'Images are administered through '
+					. i18n::get_locale_name($orig->Locale)
+				);
+
+
+				$fields->addFieldToTab('Root.Images',
+					LiteralField::create('ImagesDesc', $html)
+				);
+			}
+
 
 		}
 		
@@ -56,6 +76,7 @@ class GalleryPage extends Page {
 	// Use this in your templates to get the correctly sorted images
 	// OR use $Images.Sort('SortOrder') in your templates which will unclutter your PHP classes
 	public function SortedImages(){
+		//Debug::dump($this->Images()->Sort('SortOrder')->toArray());
 		return $this->Images()->Sort('SortOrder');
 	}
 
