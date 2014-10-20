@@ -15,29 +15,6 @@ Requires:
 
 ## Installation
 
-### Manual
-
-	git submodule add git@bitbucket.org:titledk/silverstripe-gallery.git public/gallery
-
-Remember to also add upload dir rules, and sortablefile (`"bummzack/sortablefile": "*"`).
-
-### Composer
-
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@bitbucket.org:titledk/silverstripe-gallery.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@bitbucket.org:titledk/silverstripe-uploaddirrules.git"
-		}
-		],
-	"require" {
-		"titledk/silverstripe-gallery": "*"
-	}
-
-### Instantiation
 
 Add the following to your `config.yml`:
 
@@ -53,7 +30,7 @@ Basics:
 	    - UploadDirRules_SiteTreeExtension
 
 
-A more holistic approach:
+A more holistic approach (using upload dir rules on the entire site):
 
 
 	SiteTree:
@@ -65,5 +42,5 @@ A more holistic approach:
 	    - UploadDirRules_LeftAndMainExtension
 
 NOTE: The `UploadDirRules_LeftAndMainExtension` is needed for using
-the uload dir rules in the content area as well.
+the upload dir rules in the content area as well.
 
