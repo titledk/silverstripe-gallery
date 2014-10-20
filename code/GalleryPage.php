@@ -34,8 +34,9 @@ class GalleryPage extends Page {
 
 		//adding upload field - if item has already been saved
 		if ($this->ID && $this->AssetsFolderID != 0) {
-
-			if($this->Locale == Translatable::default_locale()) {
+			
+			//this is the default, for non multi-language sites
+			if((!class_exists('Translatable') || ($this->Locale == Translatable::default_locale()))) {
 				//Use SortableUploadField instead of UploadField!
 				//The upload directory is expected to have been set in {@see UploadDirRules},
 				//and should be something like: "assets/ID-Pagename"
@@ -79,7 +80,7 @@ class GalleryPage extends Page {
 		//Debug::dump($this->Images()->Sort('SortOrder')->toArray());
 
 		$obj = $this;
-		if($this->Locale != Translatable::default_locale()) {
+		if(class_exists('Translatable') && ($this->Locale != Translatable::default_locale())) {
 			$obj = $this->getTranslation(Translatable::default_locale());
 		}
 
