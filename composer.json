@@ -9,7 +9,7 @@
   ],
   "require": {
     "bummzack/sortablefile": "*",
-    "titledk/silverstripe-uploaddirrules": "*"
+    "titledk/silverstripe-uploaddirrules": "dev-legacy"
   },
   "extra": {
     "installer-name": "gallery"
