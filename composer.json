@@ -2,7 +2,7 @@
   "name": "titledk/silverstripe-gallery",
   "description": "A simple gallery backend for SilverStripe 3 with advanced directory saving rules",
   "type": "silverstripe-module",
-  "homepage": "https://bitbucket.org/titledk/silverstripe-gallery",
+  "homepage": "https://github.com/titledk/silverstripe-gallery",
   "keywords": ["silverstripe", "gallery"],
   "authors": [
     {"name": "Anselm Christophersen","email": "ac@anselm.dk"}
