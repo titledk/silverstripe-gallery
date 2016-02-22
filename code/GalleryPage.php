@@ -1,7 +1,7 @@
 <?php
 /**
  * Gallery Page
- * 
+ *
  * @package gallery
  * @author Anselm Christophersen <ac@title.dk>
  * @copyright Copyright (c) 2014, Title Web Solutions
@@ -23,7 +23,7 @@ class GalleryPage extends Page {
 		'Images' => 'Image'
 	);
 
-	// this adds the SortOrder field to the relation table. Please note that the key (in this case 'Images') 
+	// this adds the SortOrder field to the relation table. Please note that the key (in this case 'Images')
 	// has to be the same key as in the $many_many definition!
 	private static $many_many_extraFields = array(
 		'Images' => array('SortOrder' => 'Int')
@@ -34,7 +34,7 @@ class GalleryPage extends Page {
 
 		//adding upload field - if item has already been saved
 		if ($this->ID && $this->AssetsFolderID != 0) {
-			
+
 			//this is the default, for non multi-language sites
 			if((!class_exists('Translatable') || ($this->Locale == Translatable::default_locale()))) {
 				//Use SortableUploadField instead of UploadField!
@@ -69,7 +69,7 @@ class GalleryPage extends Page {
 
 
 		}
-		
+
 		return $fields;
 	}
 
@@ -90,15 +90,15 @@ class GalleryPage extends Page {
 	public function getFirstImage(){
 		return $this->SortedImages()->First();
 	}
-	
+
 	public function getCalcThumbnail(){
 		$img = $this->getFirstImage();
 		if ($img && $img->exists())  {
 			return $img->CMSThumbnail();
 		} else {
 			return "No thumbnail available";
-		}		
-	}	
+		}
+	}
 
 
 
