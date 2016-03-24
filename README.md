@@ -19,27 +19,27 @@ Requires:
 Add the following to your `config.yml`:
 
 
-
-
 Basics:
 
-
-	GalleryPage:
-	  extensions:
-	    - AssetsFolderExtension
-	    - UploadDirRules_SiteTreeExtension
-
+```yml
+GalleryPage:
+  extensions:
+    - AssetsFolderExtension
+    - UploadDirRules_SiteTreeExtension
+```
 
 A more holistic approach (using upload dir rules on the entire site):
 
 
-	SiteTree:
-	  extensions:
-	    - AssetsFolderExtension
-	    - UploadDirRules_SiteTreeExtension
-	LeftAndMain:
-	  extensions:
-	    - UploadDirRules_LeftAndMainExtension
+```yml
+SiteTree:
+  extensions:
+    - AssetsFolderExtension
+    - UploadDirRules_SiteTreeExtension
+LeftAndMain:
+  extensions:
+    - UploadDirRules_LeftAndMainExtension
+```
 
 NOTE: The `UploadDirRules_LeftAndMainExtension` is needed for using
 the upload dir rules in the content area as well.
