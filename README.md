@@ -8,6 +8,7 @@ Features:
 * Drag'n'drop sorting
 * Gallery directories are auto created based on your settings
 * Can be used on pages as well as data objects
+* Works with the Translatable module
 
 
 For a ready-to-use gallery also install the [Gallery Pagetypes module](https://github.com/titledk/silverstripe-gallery-pagetypes).
