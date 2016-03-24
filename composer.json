@@ -11,7 +11,7 @@
   "require": {
     "php": ">=5.4",
     "bummzack/sortablefile": "*",
-    "titledk/silverstripe-uploaddirrules": "dev-legacy"
+    "titledk/silverstripe-uploaddirrules": "dev-master"
   },
   "extra": {
     "installer-name": "gallery"
