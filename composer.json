@@ -8,6 +8,7 @@
     {"name": "Anselm Christophersen","email": "ac@anselm.dk"}
   ],
   "require": {
+    "php": ">=5.4",
     "bummzack/sortablefile": "*",
     "titledk/silverstripe-uploaddirrules": "dev-legacy"
   },

@@ -1,21 +1,25 @@
 <?php
+
 /**
- * Gallery Holder.
+ * GalleryHolder
  *
- * @author Anselm Christophersen <ac@title.dk>
- * @copyright Copyright (c) 2014, Title Web Solutions
+ * @author Anselm Christophersen <ac@anselm.dk>
+ * @date   2014-2016
  */
 class GalleryHolder extends Page
 {
-    public static $singular_name = 'Gallery Holder';
-    public static $plural_name = 'Gallery Holders';
-    public static $description = 'Holder for galleries';
+    private static $singular_name = 'Gallery Holder';
+    private static $plural_name = 'Gallery Holders';
+    private static $description = 'Holder for galleries';
 
     private static $icon = 'gallery/images/pageicons/gallery-holder.png';
 
     private static $default_child = 'GalleryPage';
-    private static $allowed_children = array('GalleryPage');
+    private static $allowed_children = ['GalleryPage'];
 
+    /**
+     * @return Image
+     */
     public function getFirstImage()
     {
         $firstChild = $this->Children()->First();

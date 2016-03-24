@@ -1,7 +1,4 @@
-# Gallery
-
-_by title.dk/Anselm Christophersen - January 2014_
-
+# SilverStripe Gallery
 
 A simple gallery backend for SilverStripe 3 with advanced directory saving rules.
 

@@ -1,30 +1,33 @@
 <?php
+
 /**
- * Gallery Page.
+ * GalleryPage
  *
- * @author Anselm Christophersen <ac@title.dk>
- * @copyright Copyright (c) 2014, Title Web Solutions
+ * @author Anselm Christophersen <ac@anselm.dk>
+ * @date   2014-2016
+ *
+ * StartGeneratedWithDataObjectAnnotator
+ * @method ManyManyList|Image[] Images
+ * EndGeneratedWithDataObjectAnnotator
  */
 class GalleryPage extends Page
 {
-    public static $singular_name = 'Gallery';
-    public static $plural_name = 'Galleries';
-    public static $description = 'A page type for listing images';
-    //private static $can_be_root = false;
-    private static $allowed_children = array();
-
+    private static $singular_name = 'Gallery';
+    private static $plural_name = 'Galleries';
+    private static $description = 'A page type for listing images';
+    private static $allowed_children = [];
     private static $icon = 'gallery/images/pageicons/gallery.png';
 
-    private static $many_many = array(
+    private static $many_many = [
         'Images' => 'Image',
-    );
+    ];
+    private static $many_many_extraFields = [
+        'Images' => ['SortOrder' => 'Int'],
+    ];
 
-    // this adds the SortOrder field to the relation table. Please note that the key (in this case 'Images')
-    // has to be the same key as in the $many_many definition!
-    private static $many_many_extraFields = array(
-        'Images' => array('SortOrder' => 'Int'),
-    );
-
+    /**
+     * @return FieldList
+     */
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -34,20 +37,15 @@ class GalleryPage extends Page
 
             //this is the default, for non multi-language sites
             if ((!class_exists('Translatable') || ($this->Locale == Translatable::default_locale()))) {
-                //Use SortableUploadField instead of UploadField!
                 //The upload directory is expected to have been set in {@see UploadDirRules},
                 //and should be something like: "assets/ID-Pagename"
                 //TODO: This could easily be configurable through yml files (to e.g. "assets/galleries/ID"),
-                //so this module could do without the upload dir rules
-                //
-                //read more about adding additinoal metadata to images here:
-                //http://doc.silverstripe.org/framework/en/reference/uploadfield
-                $imageField = new SortableUploadField('Images', '');
-
+                $imageField = SortableUploadField::create('Images', '')
+                    ->setAllowedFileCategories('image');
                 $fields->addFieldToTab('Root.Images', $imageField);
             } else {
+                //Note that images are administered in the original language
                 $orig = $this->getTranslation(Translatable::default_locale());
-
                 $html = sprintf(
                     '<a href="%s">%s</a>',
                     Controller::join_links(
@@ -57,35 +55,38 @@ class GalleryPage extends Page
                     'Images are administered through '
                     .i18n::get_locale_name($orig->Locale)
                 );
-
                 $fields->addFieldToTab('Root.Images',
                     LiteralField::create('ImagesDesc', $html)
                 );
             }
         }
-
         return $fields;
     }
 
-    // Use this in your templates to get the correctly sorted images
-    // OR use $Images.Sort('SortOrder') in your templates which will unclutter your PHP classes
+    /**
+     * @return DataList
+     */
     public function SortedImages()
     {
-        //Debug::dump($this->Images()->Sort('SortOrder')->toArray());
-
         $obj = $this;
+        //translatable support
         if (class_exists('Translatable') && ($this->Locale != Translatable::default_locale())) {
             $obj = $this->getTranslation(Translatable::default_locale());
         }
-
         return $obj->Images()->Sort('SortOrder');
     }
 
+    /**
+     * @return DataObject
+     */
     public function getFirstImage()
     {
         return $this->SortedImages()->First();
     }
 
+    /**
+     * @return string|Image
+     */
     public function getCalcThumbnail()
     {
         $img = $this->getFirstImage();
