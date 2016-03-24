@@ -23,14 +23,6 @@ MyDataObject:
     - GalleryExtension
     #this is for the upload dir rules dependency, which takes care of
     #the relation between the gallery and it's folder
+    #only needed on DataObjects, as this is added automatically to SiteTree 
     - AssetsFolderExtension
-    #TODO this can go once this module is using the latest upload dir rules dependency
-    - UploadDirRules_SiteTreeExtension
-LeftAndMain:
-  extensions:
-    - UploadDirRules_LeftAndMainExtension
 ```
-
-NOTE: The `UploadDirRules_LeftAndMainExtension` is needed for using
-the upload dir rules in the content area as well.
-

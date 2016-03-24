@@ -15,6 +15,14 @@
  */
 class GalleryExtension extends DataExtension
 {
+    /**
+     * The base gallery folder
+     * NOTE that this is just the configuration, and will have to be actively set by the object
+     * using it, as an example {@see GalleryPage} in https://github.com/titledk/silverstripe-gallery-pagetypes
+     * @config
+     */
+    private static $gallery_folder = 'galleries';
+
     private static $many_many = [
         'Images' => 'Image',
     ];
@@ -62,13 +70,13 @@ class GalleryExtension extends DataExtension
     public function updateCMSFields(FieldList $fields)
     {
         //adding upload field - if item has already been saved
+        //AssetsFolderID is set by the uploaddirrules module
         if ($this->owner->ID && $this->owner->AssetsFolderID != 0) {
 
             //this is the default, for non multi-language sites
             if ((!class_exists('Translatable') || ($this->owner->Locale == Translatable::default_locale()))) {
                 //The upload directory is expected to have been set in {@see UploadDirRules},
-                //and should be something like: "assets/ID-Pagename"
-                //TODO: This could easily be configurable through yml files (to e.g. "assets/galleries/ID"),
+                //This should be handled on the object that uses this extension!
                 $imageField = SortableUploadField::create('Images', '')
                     ->setAllowedFileCategories('image');
                 $fields->addFieldToTab('Root.Images', $imageField);
