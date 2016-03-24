@@ -2,7 +2,19 @@
 
 A simple gallery backend for SilverStripe 3 with advanced directory saving rules.
 
+Features:
+
+* Bulk upload
+* Drag'n'drop sorting
+* Gallery directories are auto created based on your settings
+* Can be used on pages as well as data objects
+
+
 For a ready-to-use gallery also install the [Gallery Pagetypes module](https://github.com/titledk/silverstripe-gallery-pagetypes).
+
+![Example](docs/img/example.png)
+
+
 
 Requires:
 
