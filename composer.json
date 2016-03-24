@@ -4,6 +4,7 @@
   "type": "silverstripe-module",
   "homepage": "https://github.com/titledk/silverstripe-gallery",
   "keywords": ["silverstripe", "gallery"],
+  "license": "MIT",
   "authors": [
     {"name": "Anselm Christophersen","email": "ac@anselm.dk"}
   ],
