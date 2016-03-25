@@ -35,7 +35,7 @@ class GalleryExtension extends DataExtension
      */
     public function SortedImages()
     {
-        $obj = $this;
+        $obj = $this->owner;
         //translatable support
         if (class_exists('Translatable') && ($this->Locale != Translatable::default_locale())) {
             $obj = $this->getTranslation(Translatable::default_locale());
@@ -48,7 +48,7 @@ class GalleryExtension extends DataExtension
      */
     public function getFirstImage()
     {
-        return $this->SortedImages()->First();
+        return $this->owner->SortedImages()->First();
     }
 
     /**
@@ -56,7 +56,7 @@ class GalleryExtension extends DataExtension
      */
     public function getCalcThumbnail()
     {
-        $img = $this->getFirstImage();
+        $img = $this->owner->getFirstImage();
         if ($img && $img->exists()) {
             return $img->CMSThumbnail();
         } else {
